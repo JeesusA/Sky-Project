@@ -1,0 +1,11 @@
+{
+    "nombre": "America",
+    "apellido": "Ruiz",
+    "tipo": "Persona",
+    "contacto": "america@ejemplo.com",
+    "servicios": [
+        "Telefonia"
+    ],
+    "fecha_registro": "2025-06-02 21:47:02",
+    "numero_cliente": "C002"
+}
