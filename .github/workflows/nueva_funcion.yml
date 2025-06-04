@@ -1,0 +1,14 @@
+name: Nueva Función en el Sistema
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar equipos
+        run: |
+          echo "[NUEVA FUNCIÓN] Nueva función implementada en el sistema. Notificando a DesarrolladoresSky, EquipoITSky, AtencionClienteSky."

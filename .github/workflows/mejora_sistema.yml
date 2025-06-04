@@ -1,0 +1,14 @@
+name: Mejora en el Sistema
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar equipos
+        run: |
+          echo "[MEJORA EN EL SISTEMA] Nueva mejora implementada en el sistema. Notificando a DesarrolladoresSky, EquipoITSky, AtencionClienteSky."

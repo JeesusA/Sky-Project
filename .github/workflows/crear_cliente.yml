@@ -1,0 +1,16 @@
+name: Crear Nuevo Cliente
+
+on:
+  workflow_dispatch:
+    inputs:
+      nombre_cliente:
+        description: 'Nombre del cliente'
+        required: true
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar equipos
+        run: |
+          echo "[NUEVO CLIENTE CREADO] Nombre: ${{ github.event.inputs.nombre_cliente }}. Notificando a DesarrolladoresSky, EquipoITSky, AtencionClienteSky."

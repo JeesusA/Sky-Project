@@ -1,0 +1,16 @@
+name: Consultar Cliente
+
+on:
+  workflow_dispatch:
+    inputs:
+      numero_cliente:
+        description: 'Número del cliente a consultar (ej. C001)'
+        required: true
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar equipos
+        run: |
+          echo "[CLIENTE CONSULTADO] Número: ${{ github.event.inputs.numero_cliente }}. Notificando a DesarrolladoresSky, EquipoITSky, AtencionClienteSky."

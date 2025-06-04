@@ -1,0 +1,14 @@
+name: Cambios en el Código
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  notify_team:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar equipos
+        run: |
+          echo "[CAMBIOS EN EL CÓDIGO] Nuevos cambios en el código subidos a master. Notificando a DesarrolladoresSky, EquipoITSky, AtencionClienteSky."
