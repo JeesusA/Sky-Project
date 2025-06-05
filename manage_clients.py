@@ -318,7 +318,8 @@ def menu() -> None:
         print("2. Leer cliente (por Número, ID o Nombre)")
         print("3. Modificar cliente (agregar servicio)")
         print("4. Eliminar cliente")
-        print("5. Salir")
+        print("5. Listar todos los clientes.")
+        print("6. Salir")
         opcion = input("Seleccione una opción (1-6): ").strip()
         if opcion == "1":
             crear_cliente()
