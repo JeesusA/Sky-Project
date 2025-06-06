@@ -308,6 +308,21 @@ def eliminar_cliente() -> None:
     else:
         print("Cliente no encontrado.")
 
+def listar_clientes() -> None:
+    """
+    Lista todos los clientes registrados.
+    """
+    if not listdir(CLIENTES_DIR):
+        print("No hay clientes registrados.")
+        return
+    for archivo in listdir(CLIENTES_DIR):
+        if archivo.startswith("cliente_") and archivo.endswith(".json"):
+            cliente_id = archivo.replace("cliente_", "").replace(".json", "")
+            cliente = cargar_cliente(cliente_id)
+            if cliente:
+                print(f"ID: {cliente_id}, Número: {cliente['numero_cliente']}, Nombre: {cliente['nombre']} {cliente['apellido']}, "
+                      f"Tipo: {cliente['tipo']}, Contacto: {cliente['contacto']}, Servicios: {cliente['servicios']}")
+
 def menu() -> None:
     """
     Muestra el menú principal y maneja las opciones del usuario.
@@ -318,8 +333,9 @@ def menu() -> None:
         print("2. Leer cliente (por Número, ID o Nombre)")
         print("3. Modificar cliente (agregar servicio)")
         print("4. Eliminar cliente")
-        print("5. Salir")
-        opcion = input("Seleccione una opción (1-5): ").strip()
+        print("5. Listar todos los clientes.")
+        print("6. Salir")
+        opcion = input("Seleccione una opción (1-6): ").strip()
         if opcion == "1":
             crear_cliente()
         elif opcion == "2":
@@ -328,6 +344,8 @@ def menu() -> None:
             modificar_cliente()
         elif opcion == "4":
             eliminar_cliente()
+        elif opcion == "5":
+            listar_clientes()
         elif opcion == "6":
             print("Saliendo del sistema...")
             break
