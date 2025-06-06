@@ -308,6 +308,21 @@ def eliminar_cliente() -> None:
     else:
         print("Cliente no encontrado.")
 
+def listar_clientes() -> None:
+    """
+    Lista todos los clientes registrados.
+    """
+    if not listdir(CLIENTES_DIR):
+        print("No hay clientes registrados.")
+        return
+    for archivo in listdir(CLIENTES_DIR):
+        if archivo.startswith("cliente_") and archivo.endswith(".json"):
+            cliente_id = archivo.replace("cliente_", "").replace(".json", "")
+            cliente = cargar_cliente(cliente_id)
+            if cliente:
+                print(f"ID: {cliente_id}, Número: {cliente['numero_cliente']}, Nombre: {cliente['nombre']} {cliente['apellido']}, "
+                      f"Tipo: {cliente['tipo']}, Contacto: {cliente['contacto']}, Servicios: {cliente['servicios']}")
+
 def menu() -> None:
     """
     Muestra el menú principal y maneja las opciones del usuario.
@@ -336,21 +351,6 @@ def menu() -> None:
             break
         else:
             print("Opción no válida. Por favor, seleccione una opción entre 1 y 5.")
-
-def listar_clientes() -> None:
-    """
-    Lista todos los clientes registrados.
-    """
-    if not listdir(CLIENTES_DIR):
-        print("No hay clientes registrados.")
-        return
-    for archivo in listdir(CLIENTES_DIR):
-        if archivo.startswith("cliente_") and archivo.endswith(".json"):
-            cliente_id = archivo.replace("cliente_", "").replace(".json", "")
-            cliente = cargar_cliente(cliente_id)
-            if cliente:
-                print(f"ID: {cliente_id}, Número: {cliente['numero_cliente']}, Nombre: {cliente['nombre']} {cliente['apellido']}, "
-                      f"Tipo: {cliente['tipo']}, Contacto: {cliente['contacto']}, Servicios: {cliente['servicios']}")
 
 # Carga o inicializa el contador de clientes
 if path.exists(CONTADOR_FILE):
